@@ -1,10 +1,11 @@
+import logging
 import os
 
 from flask import Flask, jsonify
 import psycopg2
 
 app = Flask(__name__)
-
+logger = logging.getLogger("Server")
 
 @app.route("/hello")
 def hello():
@@ -30,11 +31,12 @@ def db_check():
             "message": "connected",
         })
     except Exception as e:
+        logger.error(f"Database connection failed: {e}")
+
         # If the connection fails, return an error message
         return jsonify({
-            "message": "unreachable",
-            "error": str(e),
-        })
+            "message": "unreachable"
+        }), 500
 
 
 def run():
