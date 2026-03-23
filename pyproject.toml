@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "docker-workshop"
+version = "0.1.0"
+description = "A simple Flask web server for a Docker workshop"
+authors = []
+packages = [{include = "app"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+flask = "^3.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0"
+
+[tool.poetry.scripts]
+dev = "app.main:run"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
