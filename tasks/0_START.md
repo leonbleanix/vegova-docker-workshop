@@ -17,13 +17,11 @@ You have a Python web server with a `Dockerfile` already set up. Before we move 
    ```
    docker run -p 8000:8000 workshop
    ```
-4. Stop the container with `Ctrl+C`.
+4. Open your browser and go to: `http://localhost:8000/hello`. You should see `{"message": "Hello, World!"}`
+5. Stop the container with `Ctrl+C`.
 
 ### Why does this matter?
 Every Docker Compose operation runs these commands under the hood. Understanding the basics helps you understand what's happening behind the scenes.
-
-### Verify your solution
-Open your browser and go to: `http://localhost:8000/hello`. You should see `{"message": "Hello, World!"}`
 
 ---
 
@@ -42,10 +40,8 @@ Pred teboj je Python web server z že pripravljenim `Dockerfile`-om. Preden zač
    ```
    docker run -p 8000:8000 workshop
    ```
-4. Ustavi container s `Ctrl+C`.
+4. Odpri brskalnik in pojdi na: `http://localhost:8000/hello`, kjer bi moral/a videti `{"message": "Hello, World!"}`.
+5. Ustavi container s `Ctrl+C`.
 
 ### Zakaj je to pomembno?
 Vsaka Docker Compose operacija na koncu izvede prav te ukaze. Razumevanje osnov ti bo pomagalo razumeti, kaj se dogaja "pod pokrovom".
-
-### Preveri rešitev
-Odpri brskalnik in pojdi na: `http://localhost:8000/hello`, kjer bi moral/a videti `{"message": "Hello, World!"}`.

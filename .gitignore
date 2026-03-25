@@ -1,4 +1,5 @@
 /vegova-docker-workshop.iml
 .idea
 .venv
+docker-compose.yml
 __pycache__/
