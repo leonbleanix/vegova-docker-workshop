@@ -27,7 +27,9 @@ Convert the `Dockerfile` into a multi-stage build that creates a lean production
 - To skip dev dependencies with Poetry: `poetry install --without dev`
 - Poetry creates a virtual environment by default — you don't need that in Docker. Look into `poetry config virtualenvs.create`.
 - `target` in Compose tells Docker which stage to build.
-- To create a non-root user: `RUN useradd -r appuser` then `USER appuser` — this must come after all `RUN`/`COPY` commands that need root.
+- To create a non-root user: `RUN useradd -r appuser`, `mkdir /home/appuser` to make a home directory for it.
+- `USER appuser` to make the container use the new user — this must come after all `RUN`/`COPY` commands that need root.
+- Copied files need to be assigned to the created user. Example: `COPY --chown=appuser:appuser ./app /app/app`
 - To build the production image: `docker build --target prod -t workshop-prod .`
 
 ### Why does this matter?
@@ -74,7 +76,9 @@ Spremeni `Dockerfile` v multi-stage build, ki ustvari vitek produkcijski image b
 - Za izpust dev odvisnosti pri Poetry: `poetry install --without dev`
 - Poetry privzeto ustvari virtual environment — v Docker-ju tega ne potrebuješ. Poglej `poetry config virtualenvs.create`.
 - `target` v Compose pove Docker-ju, katero stopnjo naj zgradi.
-- Za ustvaritev neprivilegiranega uporabnika: `RUN useradd -r appuser` nato `USER appuser` — to mora biti po vseh `RUN`/`COPY` ukazih, ki potrebujejo root.
+- Za ustvaritev neprivilegiranega uporabnika: `RUN useradd -r appuser`, `mkdir /home/appuser`, da mu naredimo home direktorij. 
+- `USER appuser` da image začne uporabljat nepreviligiranega userja — to mora biti po vseh `RUN`/`COPY` ukazih, ki potrebujejo root.
+- Kopirane datoteke se morajo dodeliti neprivilegiriranemu uporabniku. Primer: `COPY --chown=appuser:appuser ./app /app/app`
 - Za gradnjo produkcijskega image-a: `docker build --target prod -t workshop-prod .`
 
 ### Zakaj je to pomembno?
